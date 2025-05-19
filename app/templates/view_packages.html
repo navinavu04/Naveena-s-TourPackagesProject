@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tour Packages</title>
+</head>
+<body>
+    <h1>Available Tour Packages</h1>
+    {% for package in packages %}
+        <div style="border:1px solid #ccc; padding:10px; margin-bottom:10px;">
+            {% if package.image %}
+                <img src="{{ url_for('static', filename='uploads/' ~ package.image) }}" width="300"><br>
+            {% endif %}
+            <h2>{{ package.title }}</h2>
+            <p><strong>Description:</strong> {{ package.description }}</p>
+            <p><strong>Price:</strong> ₹{{ package.price }}</p>
+            <p><strong>Location:</strong> {{ package.location }}</p>
+            <p><strong>Duration:</strong> {{ package.duration }} days</p>
+
+            <form action="{{ url_for('book_package', package_id=package.id) }}" method="post">
+                <button type="submit">Book Now</button>
+            </form>
+        </div>
+    {% else %}
+        <p>No packages available.</p>
+    {% endfor %}
+</body>
+</html>

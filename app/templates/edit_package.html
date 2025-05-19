@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><title>Edit Package</title></head>
+<body>
+    <h2>Edit Package</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <p>{{ form.title.label }} {{ form.title() }}</p>
+        <p>{{ form.description.label }} {{ form.description() }}</p>
+        <p>{{ form.price.label }} {{ form.price() }}</p>
+        <p><input type="submit" value="Update Package"></p>
+    </form>
+    <a href="{{ url_for('vendor_dashboard') }}">Back to Dashboard</a>
+</body>
+</html>

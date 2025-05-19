@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Bookings</title>
+</head>
+<body>
+    <h2>Your Booking History</h2>
+    {% for booking in bookings %}
+        <div style="border:1px solid #ccc; padding:10px; margin-bottom:10px;">
+            <p><strong>Package:</strong> {{ booking.package.name }}</p>
+            <p><strong>Booking Date:</strong> {{ booking.booking_date.strftime('%Y-%m-%d') }}</p>
+        </div>
+    {% else %}
+        <p>You have no bookings yet.</p>
+    {% endfor %}
+</body>
+</html>
