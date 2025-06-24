@@ -145,7 +145,10 @@ def view_packages():
 
 @app.route('/book/<int:package_id>', methods=['POST'])
 def book_package(package_id):
-    user_id = 1  
+    user_id = session.get('user_id')
+    if not user_id:
+        flash("Please log in to book a package.", "warning")
+        return redirect(url_for('login'))
     booking = Booking(user_id=user_id, package_id=package_id)
     db.session.add(booking)
     db.session.commit()
